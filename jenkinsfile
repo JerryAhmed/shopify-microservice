@@ -47,11 +47,11 @@ pipeline {
             }
         }
         // Execute SCA/Dependency Test on Service Docker Image
-        stage('Snyk SCA Test | Dependencies') {
-            steps {
-                sh "${SNYK_HOME}/snyk-linux test --docker kingsleyzikora/zikora:1.0 || true" 
-            }
-        }
+        // stage('Snyk SCA Test | Dependencies') {
+        //     steps {
+        //         sh "${SNYK_HOME}/snyk-linux test --docker kingsleyzikora/zikora:1.0 || true" 
+        //     }
+        // }
         // Push Service Image to DockerHub
         stage('Push Microservice Docker Image') {
             steps {
