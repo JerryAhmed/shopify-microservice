@@ -7,11 +7,11 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME=tool 'SonarScanner'
-        SNYK_HOME   = tool name: 'Snyk'
+        // SNYK_HOME   = tool name: 'Snyk'
     }
-    tools {
-        // snyk 'Snyk'
-    }
+    // tools {
+    //     snyk 'Snyk'
+    // }
     stages {
         // SonarQube SAST Code Analysis
         stage("SonarQube SAST Analysis"){
