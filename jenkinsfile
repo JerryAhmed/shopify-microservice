@@ -23,13 +23,13 @@ pipeline {
             }
         }
         // Providing Snyk Access
-        stage('Authenticate & Authorize Snyk') {
-            steps {
-                withCredentials([string(credentialsId: 'Snyk-API-Token', variable: 'SNYK_TOKEN')]) {
-                    sh "${SNYK_HOME}/snyk-linux auth $SNYK_TOKEN"
-                }
-            }
-        }
+        // stage('Authenticate & Authorize Snyk') {
+        //     steps {
+        //         withCredentials([string(credentialsId: 'Snyk-API-Token', variable: 'SNYK_TOKEN')]) {
+        //             sh "${SNYK_HOME}/snyk-linux auth $SNYK_TOKEN"
+        //         }
+        //     }
+        // }
         // Scan Service Dockerfile With Open Policy Agent (OPA)
         stage('OPA Dockerfile Vulnerability Scan') {
             steps {
