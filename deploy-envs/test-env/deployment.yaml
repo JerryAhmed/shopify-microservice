@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: group-app
-        image: kingsleyzikora/zikora:1.0
+        image: jerry235/jerry:1.0
         resources:
           limits:
             memory: "128Mi"
