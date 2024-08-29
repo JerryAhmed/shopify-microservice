@@ -7,11 +7,11 @@ pipeline {
     agent any
     environment {
         SCANNER_HOME=tool 'SonarScanner'
-        // SNYK_HOME   = tool name: 'Snyk'
+         SNYK_HOME   = tool name: 'Snyk'
     }
-    // tools {
-    //     snyk 'Snyk'
-    // }
+     tools {
+         snyk 'Snyk'
+     }
     stages {
          SonarQube SAST Code Analysis
          stage("SonarQube SAST Analysis"){
@@ -22,15 +22,15 @@ pipeline {
                  }
              }
          }
-        // Providing Snyk Access
-        // stage('Authenticate & Authorize Snyk') {
-        //     steps {
-        //         withCredentials([string(credentialsId: 'Snyk-API-Token', variable: 'SNYK_TOKEN')]) {
-        //             sh "${SNYK_HOME}/snyk-linux auth $SNYK_TOKEN"
-        //         }
-        //     }
-        // }
-        // Scan Service Dockerfile With Open Policy Agent (OPA)
+         Providing Snyk Access
+         stage('Authenticate & Authorize Snyk') {
+             steps {
+                 withCredentials([string(credentialsId: 'Snyk-API-Token', variable: 'SNYK_TOKEN')]) {
+                     sh "${SNYK_HOME}/snyk-linux auth $SNYK_TOKEN"
+                 }
+             }
+         }
+         Scan Service Dockerfile With Open Policy Agent (OPA)
         stage('OPA Dockerfile Vulnerability Scan') {
             steps {
                 sh "docker run --rm -v ${WORKSPACE}:/project openpolicyagent/conftest test --policy docker-opa-security.rego Dockerfile || true"
@@ -47,11 +47,11 @@ pipeline {
             }
         }
         // Execute SCA/Dependency Test on Service Docker Image
-        // stage('Snyk SCA Test | Dependencies') {
-        //     steps {
-        //         sh "${SNYK_HOME}/snyk-linux test --docker jerry235/jerry:1.0 || true" 
-        //     }
-        // }
+         stage('Snyk SCA Test | Dependencies') {
+             steps {
+                 sh "${SNYK_HOME}/snyk-linux test --docker jerry235/jerry:1.0 || true" 
+             }
+         }
         // Push Service Image to DockerHub
         stage('Push Microservice Docker Image') {
             steps {
