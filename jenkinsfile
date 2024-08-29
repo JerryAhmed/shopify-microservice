@@ -12,7 +12,7 @@ pipeline {
      tools {
          snyk 'Snyk'
      }
-    // stages {
+    stages {
     //      SonarQube SAST Code Analysis
     //      stage("SonarQube SAST Analysis"){
     //          steps{
