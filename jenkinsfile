@@ -22,7 +22,7 @@ pipeline {
     //              }
     //          }
     //      }
-         Providing Snyk Access
+        //  Providing Snyk Access
          stage('Authenticate & Authorize Snyk') {
              steps {
                  withCredentials([string(credentialsId: 'Snyk-API-Token', variable: 'SNYK_TOKEN')]) {
@@ -30,7 +30,7 @@ pipeline {
                  }
              }
          }
-         Scan Service Dockerfile With Open Policy Agent (OPA)
+        //  Scan Service Dockerfile With Open Policy Agent (OPA)
         stage('OPA Dockerfile Vulnerability Scan') {
             steps {
                 sh "docker run --rm -v ${WORKSPACE}:/project openpolicyagent/conftest test --policy docker-opa-security.rego Dockerfile || true"
